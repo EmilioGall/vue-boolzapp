@@ -10,6 +10,8 @@ createApp({
 
          newMessageText: "",
 
+         autoResponse: null,
+
          contacts: [
 
             {
@@ -214,6 +216,8 @@ createApp({
 
             this.contacts[this.activeIndex].messages.push(newMessageBox);
 
+            this.setAnswer();
+
             this.newMessageText = "";
             
          };
@@ -222,7 +226,21 @@ createApp({
 
       setAnswer: function(){
 
-         //
+         this.autoResponse = setTimeout(()=> {
+
+            const newResponseBox = {
+
+               date: '10/01/2020 15:30:55',
+
+               message: 'Ok!',
+
+               status: 'received'
+
+            };     
+
+            this.contacts[this.activeIndex].messages.push(newResponseBox);
+
+         }, 1000);
 
       },
 
