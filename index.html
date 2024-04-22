@@ -246,7 +246,10 @@
                             </button>
                         </div>
     
-                        <input type="text" placeholder="Scrivi un messaggio">
+                        <input type="text" 
+                        placeholder="Scrivi un messaggio"
+                        v-model.trim="newMessageText"
+                        @keyup.enter="addMessageBox">
     
                         <div>
                             <button>

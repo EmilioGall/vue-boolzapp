@@ -8,6 +8,8 @@ createApp({
 
          activeIndex: 0,
 
+         newMessageText: "",
+
          contacts: [
 
             {
@@ -194,7 +196,35 @@ createApp({
 
    methods: {
 
-      //
+      addMessageBox: function(){
+
+         console.log("clicked");
+
+         if (this.newMessageText !== "") {
+
+            const newMessageBox = {
+
+               date: '10/01/2020 15:30:55',
+
+               message: this.newMessageText,
+
+               status: 'sent'
+
+            };
+
+            this.contacts[this.activeIndex].messages.push(newMessageBox);
+
+            this.newMessageText = "";
+            
+         };
+
+      },
+
+      setAnswer: function(){
+
+         //
+
+      },
 
    },
 
