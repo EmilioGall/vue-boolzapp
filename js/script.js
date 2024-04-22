@@ -12,6 +12,8 @@ createApp({
 
          autoResponse: null,
 
+         profileSearchText: "",
+
          contacts: [
 
             {
@@ -193,6 +195,29 @@ createApp({
    created() {
 
       //
+
+   },
+
+   computed: {
+
+      filteredContacts() {
+
+         if (this.profileSearchText === "") {
+
+            // console.log("empty input");
+
+            return this.contacts;
+
+         } else {
+
+            // console.log("good input");
+
+            return this.contacts.filter(profiles =>
+            profiles.name.toLowerCase().includes(this.profileSearchText.toLowerCase()));
+
+         };
+
+      },
 
    },
 

@@ -104,7 +104,8 @@
                                     <i class="fa-solid fa-magnifying-glass"></i>
                                 </button>
     
-                                <input type="search">
+                                <input type="search"
+                                v-model.trim="profileSearchText">
     
                             </form>
                             
@@ -114,7 +115,7 @@
                         <!-- Profiles List -->
                         <ul class="bg-w">
     
-                            <li v-for="(curContact, contactIndex) in contacts"
+                            <li v-for="(curContact, contactIndex) in filteredContacts"
                             @click="activeIndex=contactIndex">
     
                                 <img :src="`./img/avatar${curContact.avatar}.jpg`" :alt="`${curContact.name}'s avatar`">
