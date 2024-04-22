@@ -6,6 +6,8 @@ createApp({
 
       return {
 
+         activeIndex: 0,
+
          contacts: [
 
             {
@@ -14,11 +16,14 @@ createApp({
                avatar: '_1',
 
                visible: true,
-               
+
                messages: [
+
                   {
                      date: '10/01/2020 15:30:55',
+
                      message: 'Hai portato a spasso il cane?',
+
                      status: 'sent'
                   },
                   {
@@ -28,9 +33,12 @@ createApp({
                   },
                   {
                      date: '10/01/2020 16:15:22',
+
                      message: 'Tutto fatto!',
+
                      status: 'received'
                   }
+
                ],
             },
             {

@@ -116,7 +116,7 @@
     
                             <li v-for="(curContact, contactIndex) in contacts">
     
-                                <img :src="`./img/avatar${curContact.avatar}.jpg`" alt="">
+                                <img :src="`./img/avatar${curContact.avatar}.jpg`" :alt="`${curContact.name}'s avatar`">
     
                                 <div class="chat-preview">
     
@@ -154,11 +154,11 @@
                         <!-- Account Img -->
                         <div>
     
-                            <img src="./img/avatar_1.jpg" alt="">
+                            <img :src="`./img/avatar${contacts[activeIndex].avatar}.jpg`" alt="">
     
                             <div>
     
-                                <h3 class="txt-h2">Michele</h3>
+                                <h3 class="txt-h2">{{ contacts[activeIndex].name }}</h3>
     
                                 <p class="txt-1 txt-g">Ultimo accesso oggi alle 16:26</p>
     
@@ -190,18 +190,16 @@
     
                     <!-- Chat Display -->
                     <div id="display">
-    
-    
-                        <div class="txt-box sent">
+
+                        <div class="txt-box" 
+                        :class=" curChat.status === 'sent' ? 'sent' : 'received' " 
+                        v-for="(curChat, chatIndex) in contacts[activeIndex].messages">
     
                             <p class="txt-1">
-                                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Recusandae praesentium dicta sequi iste ipsam error! Nesciunt dolorem nihil quae obcaecati error doloremque eligendi inventore adipisci. Accusamus explicabo soluta placeat itaque.
-                                Voluptate, sit dolor. At recusandae harum quidem itaque dolores rem nemo nesciunt saepe quis animi vitae illum eligendi, veritatis magnam dolorum minima porro assumenda quia fugit odit consequatur? Neque, accusamus.
-                                Quaerat sequi tempora maiores cum. Placeat deleniti quae modi ullam. Laborum velit error magnam, ad laboriosam eius rem quia asperiores deleniti voluptates magni voluptate quod sequi doloremque, ea quisquam ratione.
-                                Facilis delectus ipsa soluta eaque tempora incidunt ab reiciendis consectetur. Porro consequuntur reprehenderit nemo amet, odio esse nostrum eos ex optio iste modi alias illum culpa aperiam iusto debitis earum.
-                                Error corrupti quas delectus aut? Repellat accusamus molestias ut eligendi non? Eius quam totam dolorem fugiat earum. Velit, accusamus, mollitia nisi minima voluptatem error illo consectetur ducimus corporis tempora placeat?
+                                {{ curChat.message }}
                             </p>
     
+                            <!-- Message Options Dropdown Menu -->
                             <div>
     
                                 <div>
@@ -231,159 +229,8 @@
                                 </span>
     
                             </div>
+                            <!-- /Message Options Dropdown Menu -->
     
-                        </div>
-    
-                        <div class="txt-box received">
-    
-                            <p class="txt-1">
-                                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Recusandae praesentium dicta sequi iste ipsam error!
-                            </p>
-    
-                            <div>
-    
-                                <div>
-    
-                                    <i class="fa-solid fa-chevron-down txt-1 txt-g"></i>
-    
-                                    <ul class="menu-list">
-    
-                                        <li class="txt-0 txt-d">
-                                            <button>
-                                                Info messaggio
-                                            </button>
-                                        </li>
-    
-                                        <li class="txt-0 txt-d">
-                                            <button>
-                                                Cancella messaggio
-                                            </button> 
-                                        </li>
-    
-                                    </ul>
-    
-                                </div>
-    
-                                <span class="txt-0 txt-g">
-                                    16:20
-                                </span>
-    
-                            </div>
-                            
-                        </div>
-    
-                        <div class="txt-box received">
-    
-                            <p class="txt-1">
-                                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Recusandae praesentium dicta sequi iste ipsam error! Nesciunt dolorem nihil quae obcaecati error doloremque eligendi inventore adipisci.
-                            </p>
-    
-                            <div>
-    
-                                <div>
-    
-                                    <i class="fa-solid fa-chevron-down txt-1 txt-g"></i>
-    
-                                    <ul class="menu-list">
-    
-                                        <li class="txt-0 txt-d">
-                                            <button>
-                                                Info messaggio
-                                            </button>
-                                        </li>
-    
-                                        <li class="txt-0 txt-d">
-                                            <button>
-                                                Cancella messaggio
-                                            </button> 
-                                        </li>
-    
-                                    </ul>
-    
-                                </div>
-    
-                                <span class="txt-0 txt-g">
-                                    16:21
-                                </span>
-    
-                            </div>
-                            
-                        </div>
-    
-                        <div class="txt-box sent">
-    
-                            <p class="txt-1">
-                                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Recusandae praesentium dicta sequi iste ipsam error! Nesciunt dolorem nihil quae obcaecati error doloremque eligendi inventore adipisci. Accusamus explicabo soluta placeat itaque. Error corrupti quas delectus aut? Repellat accusamus molestias ut eligendi non? Eius quam totam dolorem fugiat earum. Velit, accusamus, mollitia nisi minima voluptatem error illo consectetur ducimus corporis tempora placeat?
-                            </p>
-    
-                            <div>
-    
-                                <div>
-    
-                                    <i class="fa-solid fa-chevron-down txt-1 txt-g"></i>
-    
-                                    <ul class="menu-list">
-    
-                                        <li class="txt-0 txt-d">
-                                            <button>
-                                                Info messaggio
-                                            </button>
-                                        </li>
-    
-                                        <li class="txt-0 txt-d">
-                                            <button>
-                                                Cancella messaggio
-                                            </button> 
-                                        </li>
-    
-                                    </ul>
-    
-                                </div>
-    
-                                <span class="txt-0 txt-g">
-                                    16:36
-                                </span>
-    
-                            </div>
-    
-                        </div>
-    
-                        <div class="txt-box received">
-    
-                            <p class="txt-1">
-                                Lorem, ipsum dolor sit amet consectetur adipisicing elit.
-                            </p>
-    
-                            <div>
-    
-                                <div>
-    
-                                    <i class="fa-solid fa-chevron-down txt-1 txt-g"></i>
-    
-                                    <ul class="menu-list">
-    
-                                        <li class="txt-0 txt-d">
-                                            <button>
-                                                Info messaggio
-                                            </button>
-                                        </li>
-    
-                                        <li class="txt-0 txt-d">
-                                            <button>
-                                                Cancella messaggio
-                                            </button> 
-                                        </li>
-    
-                                    </ul>
-    
-                                </div>
-    
-                                <span class="txt-0 txt-g">
-                                    16:47
-                                </span>
-    
-                            </div>
-                            
                         </div>
     
                     </div>
