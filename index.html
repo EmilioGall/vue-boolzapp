@@ -114,7 +114,8 @@
                         <!-- Profiles List -->
                         <ul class="bg-w">
     
-                            <li v-for="(curContact, contactIndex) in contacts">
+                            <li v-for="(curContact, contactIndex) in contacts"
+                            @click="activeIndex=contactIndex">
     
                                 <img :src="`./img/avatar${curContact.avatar}.jpg`" :alt="`${curContact.name}'s avatar`">
     
