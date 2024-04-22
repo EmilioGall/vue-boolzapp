@@ -1,0 +1,384 @@
+/*** RESET ********************/
+/******************************/
+
+:root {
+    --black: rgba(0, 0, 0, 1);
+    --white: rgba(255, 255, 255, 1);
+
+    --offwhite: rgba(234, 234, 234, 1);
+    --grey: rgba(177, 177, 177, 1);
+    --dark: rgba(107, 115, 118, 1);
+    --lightcyan: rgba(142, 218, 252, 1);
+
+    --green: rgba(0, 150, 136, 1);
+    --beige: rgba(219, 219, 210, 1);
+
+    --lightgreen: rgba(213, 249, 186, 1);
+
+    --headers-h: 60px;
+    --icon-h: 40px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+img {
+    max-width: 100%;
+}
+
+ul {
+    list-style-type: none;
+}
+
+menu {
+    list-style-type: none;
+}
+
+a {
+    display: inline-block;
+    color:inherit;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+button {
+    background: none;
+	color: inherit;
+	border: none;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+}
+
+/*** COMMON ********************/
+/*******************************/
+
+body{
+    background: linear-gradient(to top,
+    rgba(219, 219, 210, 1) 0%,
+    rgba(219, 219, 210, 1) 90%,
+    rgba(0, 150, 136, 1) 90%,
+    rgba(0, 150, 136, 1) 100%);
+
+    font-family: sans-serif;
+}
+
+header button {
+    width: var(--icon-h);
+    aspect-ratio: 1;
+    border-radius: 50%;
+}
+
+/*** UTILITIES ********************/
+/**********************************/
+
+/* Typography ********************/
+
+.txt-0 {
+    font-size: calc(.1vw + .5rem);
+    line-height: calc(.1vw + .4rem);
+    font-weight: 100;
+}
+
+.txt-1 {
+    font-size: calc(.2vw + .5rem);
+    line-height: calc(.2vw + .7rem);
+}
+
+.txt-h3 {
+    font-size: calc(.2vw + .5rem);
+    line-height: calc(.1vw + .5rem);
+    letter-spacing: .001rem;
+    word-spacing: .0001rem;
+    font-weight: 500;
+}
+
+.txt-h2 {
+    font-size: calc(.3vw + .8rem);
+    line-height: calc(.4vw + 1.4rem);
+    font-weight: 100;
+}
+
+/*** Colors ********************/
+
+.txt-g {
+    color: var(--grey);
+}
+
+.txt-lc {
+    color: var(--lightcyan);
+}
+
+.txt-d {
+    color: var(--dark);
+}
+
+/*** Background Colors ********************/
+
+.bg-w {
+    background-color: var(--white);
+}
+
+.bg-ow {
+    background-color: var(--offwhite);
+}
+
+.bg-lc {
+    background-color: var(--lightcyan);
+}
+
+/*** LAYOUT ********************/
+/*******************************/
+
+main {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    height: var(--headers-h);
+    background-color: var(--offwhite);
+    padding: calc((var(--headers-h) - var(--icon-h)) / 2);
+}
+
+/*** Profiles Section ********************/
+
+#profiles {
+    display: none;
+}
+
+#profiles ul {
+    overflow-y: scroll;
+}
+
+#profiles li {
+    display: flex;
+    align-items: center;
+    padding: calc((var(--headers-h) - var(--icon-h)) / 2);
+    border-top: 1px solid var(--offwhite);
+}
+
+#profiles img {
+    display: block;
+    width: var(--icon-h);
+    aspect-ratio: 1;
+    border-radius: 50%;
+    object-fit: contain;
+}
+
+/* Header - Profiles Section ********************/
+
+#profiles header div:last-child {
+    display: none;
+    align-items: center;
+    gap: calc((var(--headers-h) - var(--icon-h)) / 5);
+    margin-right: calc((var(--headers-h) - var(--icon-h)) / 2);
+}
+
+/* Notifications - Profiles Section ********************/
+
+.notifications {
+    display: none;
+    align-items: center;
+    height: var(--headers-h);
+    background-color: var(--lightcyan);
+    padding: calc((var(--headers-h) - var(--icon-h)) / 2);
+}
+
+.notifications div:first-child {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: var(--icon-h);
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background-color: var(--white);
+    margin-right: calc((var(--headers-h) - var(--icon-h)) / 2);
+}
+
+.notifications button {
+    text-decoration-line: underline;
+}
+
+/* Chats List - Profiles Section ********************/
+
+#profiles .search {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    height: var(--icon-h);
+    background-color: var(--offwhite);
+    padding: calc((var(--headers-h) - var(--icon-h)) / 4);
+}
+
+#profiles .search form {
+    display: flex;
+    align-items: center;
+    gap: calc((var(--headers-h) - var(--icon-h)) / 2);
+    flex-grow: 1;
+    background-color: var(--white);
+    border-radius: 3px;
+    border: 1px solid var(--white);
+    padding: 2px 5px;
+}
+
+#profiles .search input {
+    border: none;
+    flex-grow: 1;
+}
+
+.chat-preview {
+    width: 100%;
+    display: none;
+    justify-content: space-between;
+    padding-left: 1.5vh;
+}
+
+.chat-preview div {
+    overflow-y:visible;
+}
+
+.chat-preview span {
+    justify-self: end;
+}
+
+/*** Chat Section ********************/
+
+#chat {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+#chat img {
+    display: block;
+    width: var(--icon-h);
+    aspect-ratio: 1;
+    border-radius: 50%;
+    object-fit: contain;
+    margin-right: calc((var(--headers-h) - var(--icon-h)) / 2);
+}
+
+/*** Header - Chat Section ********************/
+
+#chat header div:first-child {
+    display: flex;
+    align-items: center;
+}
+
+#chat header div + div:last-child {
+    display: flex;
+    align-items: center;
+    gap: calc((var(--headers-h) - var(--icon-h)) / 5);
+    margin-right: calc((var(--headers-h) - var(--icon-h)) / 2);
+}
+
+/*** Chat Display - Chat Section ********************/
+
+#display {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    background-image: url(../img/mine.jpg);
+    padding: calc(.5 * var(--icon-h)) calc(1.5 * var(--icon-h));
+    overflow-y: scroll;
+}
+
+#display .txt-box {
+    max-width: 80%;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 15px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    box-shadow: 2px 2px 20px var(--grey);
+}
+
+#display .txt-box p {
+    width: 90%;
+    padding-bottom: 20px;
+}
+
+#display .txt-box div {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    justify-content: space-between;
+    position: relative;
+}
+
+#display .txt-box div div {
+    width: 100%;
+}
+
+#display .txt-box div div ul {
+    display: none;
+    background-color: var(--white);
+    position:absolute;
+    width: 120px;
+    right: -2px;
+    padding: 5px 15px 5px 10px;
+    border-radius: 5px;
+    box-shadow: 2px 2px 10px var(--grey);
+}
+
+#display .txt-box.received div div ul {
+    background-color: var(--offwhite);
+}
+
+#display .txt-box div li {
+    line-height: 1rem;
+    text-align: center;
+    text-wrap: nowrap;
+}
+
+#display .sent {
+    align-self: flex-end;
+    background-color: var(--lightgreen); 
+}
+
+#display .received {
+    background-color: var(--white); 
+}
+
+/*** Typing Box - Chat Section ********************/
+
+#typing {
+    width: 100%;
+    min-height: var(--headers-h);
+    max-height: calc(2 * var(--headers-h));
+    background-color: var(--offwhite);
+    padding: calc((var(--headers-h) - var(--icon-h)) / 2);
+    display: flex;
+    justify-content: space-between;
+    gap: calc((var(--headers-h) - var(--icon-h)) / 2);
+    align-items: center;
+}
+
+#typing div {
+    display: none;
+    aspect-ratio: 1;
+}
+
+#typing button {
+    display: block;
+    width: var(--icon-h);
+    aspect-ratio: 1;
+    border-radius: 50%;
+}
+
+#typing input {
+    flex-grow: 1;
+    height: 100%;
+    border-radius: 3px;
+    border: 1px solid var(--white);
+    padding: 2px 5px;
+}

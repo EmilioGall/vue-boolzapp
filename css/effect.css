@@ -1,0 +1,40 @@
+/*** COMMON ********************/
+/*******************************/
+
+/*** MAIN ********************/
+/*******************************/
+
+header button:hover {
+    background-color: var(--white);
+}
+
+header button:hover > i {
+    color: var(--grey);
+}
+
+#profiles li:hover {
+    background-color: var(--offwhite);
+    border-top: 1px solid var(--white);
+    cursor: pointer;
+}
+
+#typing button:hover {
+    background-color: var(--white);
+}
+
+#typing input:hover {
+    border: 1px solid var(--grey);
+}
+
+#profiles .search form:hover {
+    border: 1px solid var(--grey);
+}
+
+#display .txt-box div div:hover .fa-chevron-down {
+    transform: rotate(180deg);
+    z-index: 1;
+}
+
+#display .txt-box div div:hover ul {
+    display: inline-block;
+}

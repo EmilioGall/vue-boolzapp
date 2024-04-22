@@ -1,0 +1,90 @@
+@media screen and (min-width: 768px) {
+
+    /*** LAYOUT ********************/
+    /*******************************/
+
+    /*** PROFILES ********************/
+
+    #profiles {
+        display: block;
+        width: var(--headers-h);
+    }
+
+    #profiles ul {
+        height: calc( 100vh - var(--headers-h));
+    }
+
+    /*** CHAT ********************/
+
+    #chat {
+        width: calc(100% - var(--headers-h));
+    }
+
+    #chat header {
+        border-left: 1px solid var(--grey);
+    }
+
+    #display .txt-box {
+        max-width: 55%;
+    }
+
+    #typing div {
+        display: flex;
+    }
+
+}
+
+@media screen and (min-width: 992px) {
+
+    /*** LAYOUT ********************/
+    /*******************************/
+
+    main {
+        width: 90%;
+        height: 94vh;
+        margin: 3vh auto;
+        max-width: 1200px;
+    }
+
+    /*** PROFILES ********************/
+
+    #profiles {
+        width: 25%;
+    }
+
+    #profiles ul {
+        height: calc( 94vh - 2 * var(--headers-h) - 2/3 * var(--headers-h));
+    }
+
+    #profiles header div:last-child {
+        display: flex;
+    }
+
+    .notifications {
+        display: flex;
+    }
+
+    #profiles .search {
+        display: flex;
+    }
+
+    .chat-preview {
+        display: flex;
+    }
+
+    /*** CHAT ********************/
+
+    #chat {
+        width: 75%;
+    }
+
+    #display {
+        height: calc(100vh - 2 * var(--headers-h) - 6vh);
+        overflow-y: scroll;
+    }
+
+    #display .txt-box {
+        max-width: 60%;
+    }
+
+}
