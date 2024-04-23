@@ -126,13 +126,15 @@
     
                                         <h3 class="txt-h2">{{curContact.name}}</h3>
     
-                                        <p class="txt-1 txt-g">Lorem ipsum dolor sit</p>
+                                        <p class="txt-1 txt-g">
+                                            {{ curContact.messages[curContact.messages.length-1].message }}
+                                        </p>
     
                                     </div>
     
                                     <span class="txt-1 txt-g">
 
-                                        <!-- {{ simpleDate(curContact.messages.date) }} -->
+                                        {{ simpleDate(curContact.messages[curContact.messages.length-1].date) }}
 
                                     </span>
     
