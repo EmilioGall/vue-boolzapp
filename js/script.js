@@ -225,7 +225,7 @@ createApp({
 
       addMessageBox: function(){
 
-         console.log("clicked");
+         // console.log("clicked");
 
          if (this.newMessageText !== "") {
 
@@ -266,6 +266,16 @@ createApp({
             this.contacts[this.activeIndex].messages.push(newResponseBox);
 
          }, 1000);
+
+      },
+
+      deleteCurMessageBox: function(curChatIndex){
+
+         console.log("clicked");
+
+         console.log("this.chatIndex", curChatIndex);
+
+         this.filteredContacts[this.activeIndex].messages.splice(curChatIndex, 1);
 
       },
 

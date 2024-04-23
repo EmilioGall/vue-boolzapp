@@ -116,7 +116,7 @@
                         <ul class="bg-w">
     
                             <li v-for="(curContact, contactIndex) in filteredContacts"
-                            @click="activeIndex=contactIndex">
+                            @click="activeIndex = contactIndex">
     
                                 <img :src="`./img/avatar${curContact.avatar}.jpg`" :alt="`${curContact.name}'s avatar`">
     
@@ -156,11 +156,11 @@
                         <!-- Account Img -->
                         <div>
     
-                            <img :src="`./img/avatar${contacts[activeIndex].avatar}.jpg`" alt="">
+                            <img :src="`./img/avatar${filteredContacts[activeIndex].avatar}.jpg`" alt="">
     
                             <div>
     
-                                <h3 class="txt-h2">{{ contacts[activeIndex].name }}</h3>
+                                <h3 class="txt-h2">{{ filteredContacts[activeIndex].name }}</h3>
     
                                 <p class="txt-1 txt-g">Ultimo accesso oggi alle 16:26</p>
     
@@ -195,7 +195,7 @@
 
                         <div class="txt-box" 
                         :class=" curChat.status === 'sent' ? 'sent' : 'received' " 
-                        v-for="(curChat, chatIndex) in contacts[activeIndex].messages">
+                        v-for="(curChat, curChatIndex) in filteredContacts[activeIndex].messages">
     
                             <p class="txt-1">
                                 {{ curChat.message }}
@@ -217,7 +217,8 @@
                                         </li>
     
                                         <li class="txt-0 txt-d">
-                                            <button>
+                                            <button
+                                            @click="deleteCurMessageBox(curChatIndex)">
                                                 Cancella messaggio
                                             </button> 
                                         </li>

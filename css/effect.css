@@ -38,3 +38,8 @@ header button:hover > i {
 #display .txt-box div div:hover ul {
     display: inline-block;
 }
+
+#display .txt-box div div ul li:hover{
+    color: var(--grey);
+    cursor: pointer;
+}
