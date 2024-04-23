@@ -1,3 +1,29 @@
+/////Luxon///////////////////////////////////
+
+const dt = luxon.DateTime;
+
+const now = dt.now()
+
+// console.log(now);
+
+// console.log(now.setLocale('it').toLocaleString(dt.DATE_HUGE));
+
+// console.log(now.setLocale('it').toLocaleString(dt.TIME_SIMPLE));
+
+console.log(now.setLocale('it').toLocaleString(dt.DATE_SHORT));
+
+console.log(now.setLocale('it').toLocaleString(dt.TIME_WITH_SECONDS));
+
+console.log(`${now.setLocale('it').toLocaleString(dt.DATE_SHORT)} ${now.setLocale('it').toLocaleString(dt.TIME_WITH_SECONDS)}`);
+
+// const dateString = "10/01/2020 15:30:55";
+
+// const dateLuxon = dt.fromFormat(dateString, "dd/MM/yyyy TT")
+
+// console.log("data Luxon", dateLuxon);
+
+
+/////VueJS///////////////////////////////////
 const { createApp } = Vue;
 
 createApp({
@@ -194,7 +220,7 @@ createApp({
 
    created() {
 
-      //
+      console.log();
 
    },
 
@@ -231,7 +257,7 @@ createApp({
 
             const newMessageBox = {
 
-               date: '10/01/2020 15:30:55',
+               date: `${now.setLocale('it').toLocaleString(dt.DATE_SHORT)} ${now.setLocale('it').toLocaleString(dt.TIME_WITH_SECONDS)}`,
 
                message: this.newMessageText,
 
@@ -279,6 +305,18 @@ createApp({
 
       },
 
+      simpleDate: function(dateToSimplify){
+
+         const dateInLuxon = dt.fromFormat(dateToSimplify, "dd/MM/yyyy TT")
+
+         // console.log("data Luxon", dateInLuxon);
+
+         // console.log(dateInLuxon.setLocale('it').toLocaleString(dt.TIME_SIMPLE));
+
+         return dateInLuxon.setLocale('it').toLocaleString(dt.TIME_SIMPLE);
+
+      },
+   
    },
 
 }).mount("#app");

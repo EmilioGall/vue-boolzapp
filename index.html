@@ -131,7 +131,9 @@
                                     </div>
     
                                     <span class="txt-1 txt-g">
-                                        16:15
+
+                                        <!-- {{ simpleDate(curContact.messages.date) }} -->
+
                                     </span>
     
                                 </div>
@@ -228,7 +230,7 @@
                                 </div>
     
                                 <span class="txt-0 txt-g">
-                                    16:13
+                                    {{ simpleDate(curChat.date)}}
                                 </span>
     
                             </div>
@@ -271,7 +273,7 @@
         </div>
         <!-- /VueJS App Container -->
 
-
+        <script src="https://cdn.jsdelivr.net/npm/luxon@3.4.4/build/global/luxon.min.js"></script>        
         <script src="./js/script.js"></script>
     </body>
 
