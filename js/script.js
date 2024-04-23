@@ -2,7 +2,7 @@
 
 const dt = luxon.DateTime;
 
-const now = dt.now()
+const now1 = dt.now()
 
 // console.log(now);
 
@@ -10,11 +10,11 @@ const now = dt.now()
 
 // console.log(now.setLocale('it').toLocaleString(dt.TIME_SIMPLE));
 
-console.log(now.setLocale('it').toLocaleString(dt.DATE_SHORT));
+// console.log(now.setLocale('it').toLocaleString(dt.DATE_SHORT));
 
-console.log(now.setLocale('it').toLocaleString(dt.TIME_WITH_SECONDS));
+// console.log(now.setLocale('it').toLocaleString(dt.TIME_WITH_SECONDS));
 
-console.log(`${now.setLocale('it').toLocaleString(dt.DATE_SHORT)} ${now.setLocale('it').toLocaleString(dt.TIME_WITH_SECONDS)}`);
+// console.log(`${now1.setLocale('it').toLocaleString(dt.DATE_SHORT)} ${now1.setLocale('it').toLocaleString(dt.TIME_WITH_SECONDS)}`);
 
 // const dateString = "10/01/2020 15:30:55";
 
@@ -39,6 +39,8 @@ createApp({
          autoResponse: null,
 
          profileSearchText: "",
+
+         showSendButton: false,
 
          contacts: [
 
@@ -220,8 +222,7 @@ createApp({
 
    created() {
 
-      console.log();
-
+      //
    },
 
    computed: {
@@ -245,9 +246,31 @@ createApp({
 
       },
 
+      messageBoxCheck() {
+
+         if(this.newMessageText === "") {
+
+            return this.showSendButton = false;
+
+         } else {
+
+            return this.showSendButton = true;
+
+         };
+ 
+      },
+
    },
 
    methods: {
+
+      show: function(){
+
+         this.showSendButton = !this.showSendButton
+
+         console.log("showSendButton", this.showSendButton);
+
+      },
 
       addMessageBox: function(){
 
@@ -255,17 +278,25 @@ createApp({
 
          if (this.newMessageText !== "") {
 
+            const nowDate = dt.now()
+
+            console.log("nowDate", nowDate, typeof nowDate);
+
             const newMessageBox = {
 
-               date: `${now.setLocale('it').toLocaleString(dt.DATE_SHORT)} ${now.setLocale('it').toLocaleString(dt.TIME_WITH_SECONDS)}`,
+               date: `${nowDate.setLocale('it').toLocaleString(dt.DATE_SHORT)} ${nowDate.setLocale('it').toLocaleString(dt.TIME_WITH_SECONDS)}`,
 
                message: this.newMessageText,
 
-               status: 'sent'
+               status: 'sent',
 
             };
 
-            this.contacts[this.activeIndex].messages.push(newMessageBox);
+            console.log("newMessageBox", newMessageBox, typeof newMessageBox);
+
+            console.log(this.simpleDate("10/01/2020 15:30:55"));
+
+            this.filteredContacts[this.activeIndex].messages.push(newMessageBox);
 
             this.setAnswer();
 
@@ -279,9 +310,11 @@ createApp({
 
          this.autoResponse = setTimeout(()=> {
 
+            const nowDate = dt.now()
+
             const newResponseBox = {
 
-               date: '10/01/2020 15:30:55',
+               date: `${nowDate.setLocale('it').toLocaleString(dt.DATE_SHORT)} ${nowDate.setLocale('it').toLocaleString(dt.TIME_WITH_SECONDS)}`,
 
                message: 'Ok!',
 
@@ -289,7 +322,7 @@ createApp({
 
             };     
 
-            this.contacts[this.activeIndex].messages.push(newResponseBox);
+            this.filteredContacts[this.activeIndex].messages.push(newResponseBox);
 
          }, 1000);
 
@@ -297,9 +330,9 @@ createApp({
 
       deleteCurMessageBox: function(curChatIndex){
 
-         console.log("clicked");
+         // console.log("clicked");
 
-         console.log("this.chatIndex", curChatIndex);
+         // console.log("this.chatIndex", curChatIndex);
 
          this.filteredContacts[this.activeIndex].messages.splice(curChatIndex, 1);
 
@@ -307,7 +340,7 @@ createApp({
 
       simpleDate: function(dateToSimplify){
 
-         const dateInLuxon = dt.fromFormat(dateToSimplify, "dd/MM/yyyy TT")
+         const dateInLuxon = dt.fromFormat(dateToSimplify, "dd/MM/yyyy TT");
 
          // console.log("data Luxon", dateInLuxon);
 

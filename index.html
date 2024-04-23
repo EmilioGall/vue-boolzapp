@@ -2,281 +2,288 @@
 
 <html lang="en">
 
-    <head>
+<head>
 
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <!-- Link Fontawesome -->
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
-        <!-- /Link Fontawesome -->
+    <!-- Link Fontawesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!-- /Link Fontawesome -->
 
-        <!-- Link Vue JS -->
-        <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
-        <!-- /Link Vue JS -->
+    <!-- Link Vue JS -->
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+    <!-- /Link Vue JS -->
 
-        <!-- Link Custom Style -->
-        <link rel="stylesheet" href="./css/style.css">
+    <!-- Link Custom Style -->
+    <link rel="stylesheet" href="./css/style.css">
 
-        <link rel="stylesheet" href="./css/responsive.css">
+    <link rel="stylesheet" href="./css/responsive.css">
 
-        <link rel="stylesheet" href="./css/effect.css">
-        <!-- /Link Custom Style -->
+    <link rel="stylesheet" href="./css/effect.css">
+    <!-- /Link Custom Style -->
 
-        <title>Boolzapp - VueJS</title>
+    <title>Boolzapp - VueJS</title>
 
-    </head>
+</head>
 
-    <body>
-        
-        <!-- VueJS App Container -->
-        <div id="app">
+<body>
 
-            <!-- Main -->
-            <main>
-    
-                <!-- Profiles Section -->
-                <Section id="profiles">
-                    
-                    <!-- Header Profiles -->
-                    <header>
-    
-                        <!-- Account Img -->
-                        <div>
-    
-                            <img src="./img/avatar_io.jpg" alt="">
-    
-                        </div>
-                        <!-- /Account Img -->
-    
-                        <!-- Account Tools -->
-                        <div>
-    
-                            <button>
-                                <i class="txt-g fa-solid fa-circle-notch"></i>
-                            </button>
-    
-                            <button>
-                                <i class="txt-g fa-solid fa-message"></i>
-                            </button>
-    
-                            <button>
-                                <i class="txt-g fa-solid fa-ellipsis-vertical"></i>
-                            </button>
-    
-                        </div>
-                        <!-- /Account Tools -->
-    
-                    </header>
-                    <!-- Header Profiles -->
-    
-                    <!-- Notifications Banner -->
-                    <div class="notifications">
-    
-                        <div>
-                            <i class="fa-solid fa-bell-slash txt-lc bg-w"></i>
-                        </div>
-    
-                        <div>
-    
-                            <p class="txt-h3">
-                                Ricevi notifiche di nuovi messaggi
-                            </p>
-    
-                            <button class="txt-1 txt-d">
-                                Attiva notifiche Desktop
-                            </button>
-    
-                        </div>
-                        
-                    </div>
-                    <!-- Notifications Banner -->
-    
-                    <!-- Chats List -->
+    <!-- VueJS App Container -->
+    <div id="app">
+
+        <!-- Main -->
+        <main>
+
+            <!-- Profiles Section -->
+            <Section id="profiles">
+
+                <!-- Header Profiles -->
+                <header>
+
+                    <!-- Account Img -->
                     <div>
-    
-                        <!-- Search Bar -->
-                        <div class="search bg-w">
-    
-                            <form>
-    
-                                <button class="txt-g">
-                                    <i class="fa-solid fa-magnifying-glass"></i>
-                                </button>
-    
-                                <input type="search"
-                                v-model.trim="profileSearchText">
-    
-                            </form>
-                            
-                        </div>
-                        <!-- /Search Bar -->
-    
-                        <!-- Profiles List -->
-                        <ul class="bg-w">
-    
-                            <li v-for="(curContact, contactIndex) in filteredContacts"
-                            @click="activeIndex = contactIndex">
-    
-                                <img :src="`./img/avatar${curContact.avatar}.jpg`" :alt="`${curContact.name}'s avatar`">
-    
-                                <div class="chat-preview">
-    
-                                    <div>
-    
-                                        <h3 class="txt-h2">{{curContact.name}}</h3>
-    
-                                        <p class="txt-1 txt-g">
-                                            {{ curContact.messages[curContact.messages.length-1].message }}
-                                        </p>
-    
-                                    </div>
-    
-                                    <span class="txt-1 txt-g">
 
-                                        {{ simpleDate(curContact.messages[curContact.messages.length-1].date) }}
+                        <img src="./img/avatar_io.jpg" alt="">
 
-                                    </span>
-    
-                                </div>
-    
-                            </li>
-    
-                        </ul>
-                        <!-- /Profiles List -->
-    
                     </div>
-                    <!-- Chats List -->
-    
-                </Section>
-                <!-- /Profiles Section -->
-    
-                <!-- Chat Section -->
-                <section id="chat">
-    
-                    <!-- Header Chat -->
-                    <header>
-    
-                        <!-- Account Img -->
-                        <div>
-    
-                            <img :src="`./img/avatar${filteredContacts[activeIndex].avatar}.jpg`" alt="">
-    
-                            <div>
-    
-                                <h3 class="txt-h2">{{ filteredContacts[activeIndex].name }}</h3>
-    
-                                <p class="txt-1 txt-g">Ultimo accesso oggi alle 16:26</p>
-    
-                            </div>
-    
-                        </div>
-                        <!-- /Account Img -->
-    
-                        <!-- Account Tools -->
-                        <div>
-    
-                            <button>
-                                <i class="txt-g fa-solid fa-magnifying-glass"></i>
-                            </button>
-    
-                            <button>
-                                <i class="txt-g fa-solid fa-paperclip"></i>
-                            </button>
-    
-                            <button>
-                                <i class="txt-g fa-solid fa-ellipsis-vertical"></i>
-                            </button>
-    
-                        </div>
-                        <!-- /Account Tools -->
-    
-                    </header>
-                    <!-- Header Chat -->
-    
-                    <!-- Chat Display -->
-                    <div id="display">
+                    <!-- /Account Img -->
 
-                        <div class="txt-box" 
-                        :class=" curChat.status === 'sent' ? 'sent' : 'received' " 
-                        v-for="(curChat, curChatIndex) in filteredContacts[activeIndex].messages">
-    
-                            <p class="txt-1">
-                                {{ curChat.message }}
-                            </p>
-    
-                            <!-- Message Options Dropdown Menu -->
-                            <div>
-    
+                    <!-- Account Tools -->
+                    <div>
+
+                        <button>
+                            <i class="txt-g fa-solid fa-circle-notch"></i>
+                        </button>
+
+                        <button>
+                            <i class="txt-g fa-solid fa-message"></i>
+                        </button>
+
+                        <button>
+                            <i class="txt-g fa-solid fa-ellipsis-vertical"></i>
+                        </button>
+
+                    </div>
+                    <!-- /Account Tools -->
+
+                </header>
+                <!-- Header Profiles -->
+
+                <!-- Notifications Banner -->
+                <div class="notifications">
+
+                    <div>
+                        <i class="fa-solid fa-bell-slash txt-lc bg-w"></i>
+                    </div>
+
+                    <div>
+
+                        <p class="txt-h3">
+                            Ricevi notifiche di nuovi messaggi
+                        </p>
+
+                        <button class="txt-1 txt-d">
+                            Attiva notifiche Desktop
+                        </button>
+
+                    </div>
+
+                </div>
+                <!-- Notifications Banner -->
+
+                <!-- Chats List -->
+                <div>
+
+                    <!-- Search Bar -->
+                    <div class="search bg-w">
+
+                        <form>
+
+                            <button class="txt-g">
+                                <i class="fa-solid fa-magnifying-glass"></i>
+                            </button>
+
+                            <input type="search" v-model.trim="profileSearchText">
+
+                        </form>
+
+                    </div>
+                    <!-- /Search Bar -->
+
+                    <!-- Profiles List -->
+                    <ul class="bg-w">
+
+                        <li v-for="(curContact, contactIndex) in filteredContacts" @click="activeIndex = contactIndex">
+
+                            <img :src="`./img/avatar${curContact.avatar}.jpg`" :alt="`${curContact.name}'s avatar`">
+
+                            <div class="chat-preview">
+
                                 <div>
-    
-                                    <i class="fa-solid fa-chevron-down txt-1 txt-g"></i>
-    
-                                    <ul class="menu-list">
-    
-                                        <li class="txt-0 txt-d">
-                                            <button>
-                                                Info messaggio
-                                            </button>
-                                        </li>
-    
-                                        <li class="txt-0 txt-d">
-                                            <button
-                                            @click="deleteCurMessageBox(curChatIndex)">
-                                                Cancella messaggio
-                                            </button> 
-                                        </li>
-    
-                                    </ul>
-    
+
+                                    <h3 class="txt-h2">{{curContact.name}}</h3>
+
+                                    <p class="txt-1 txt-g">
+                                        {{ curContact.messages[curContact.messages.length-1].message }}
+                                    </p>
+
                                 </div>
-    
-                                <span class="txt-0 txt-g">
-                                    {{ simpleDate(curChat.date)}}
+
+                                <span class="txt-1 txt-g">
+
+                                    {{ simpleDate(curContact.messages[curContact.messages.length-1].date) }}
+
                                 </span>
-    
+
                             </div>
-                            <!-- /Message Options Dropdown Menu -->
-    
-                        </div>
-    
-                    </div>
-                    <!-- /Chat Display -->
-    
-                    <!-- Typing Box -->
-                    <div id="typing">
-    
-                        <div>
-                            <button>
-                                <i class="fa-regular fa-face-smile txt-d"></i>
-                            </button>
-                        </div>
-    
-                        <input type="text" 
-                        placeholder="Scrivi un messaggio"
-                        v-model.trim="newMessageText"
-                        @keyup.enter="addMessageBox">
-    
-                        <div>
-                            <button>
-                                <i class="fa-solid fa-microphone txt-d"></i>
-                            </button>
-                        </div>
-    
-                    </div>
-                    <!-- /Typing Box -->
-    
-                </section>
-                <!-- /Chat Section -->
-    
-            </main>
-            <!-- /Main -->
 
-        </div>
-        <!-- /VueJS App Container -->
+                        </li>
 
-        <script src="https://cdn.jsdelivr.net/npm/luxon@3.4.4/build/global/luxon.min.js"></script>        
-        <script src="./js/script.js"></script>
-    </body>
+                    </ul>
+                    <!-- /Profiles List -->
+
+                </div>
+                <!-- Chats List -->
+
+            </Section>
+            <!-- /Profiles Section -->
+
+            <!-- Chat Section -->
+            <section id="chat">
+
+                <!-- Header Chat -->
+                <header>
+
+                    <!-- Account Img -->
+                    <div>
+
+                        <img :src="`./img/avatar${filteredContacts[activeIndex].avatar}.jpg`" alt="">
+
+                        <div>
+
+                            <h3 class="txt-h2">{{ filteredContacts[activeIndex].name }}</h3>
+
+                            <p class="txt-1 txt-g">Ultimo accesso oggi alle 16:26</p>
+
+                        </div>
+
+                    </div>
+                    <!-- /Account Img -->
+
+                    <!-- Account Tools -->
+                    <div>
+
+                        <button>
+                            <i class="txt-g fa-solid fa-magnifying-glass"></i>
+                        </button>
+
+                        <button>
+                            <i class="txt-g fa-solid fa-paperclip"></i>
+                        </button>
+
+                        <button>
+                            <i class="txt-g fa-solid fa-ellipsis-vertical"></i>
+                        </button>
+
+
+                    </div>
+                    <!-- /Account Tools -->
+
+                </header>
+                <!-- Header Chat -->
+
+                <!-- Chat Display -->
+                <div id="display">
+
+                    <div class="txt-box" 
+                    :class=" curChat.status === 'sent' ? 'sent' : 'received' "
+                    v-for="(curChat, curChatIndex) in filteredContacts[activeIndex].messages">
+
+                        <p class="txt-1">
+                            {{ curChat.message }}
+                        </p>
+
+                        <!-- Message Options Dropdown Menu -->
+                        <div>
+
+                            <div>
+
+                                <i class="fa-solid fa-chevron-down txt-1 txt-g"></i>
+
+                                <ul class="menu-list">
+
+                                    <li class="txt-0 txt-d">
+                                        <button>
+                                            Info messaggio
+                                        </button>
+                                    </li>
+
+                                    <li class="txt-0 txt-d">
+                                        <button @click="deleteCurMessageBox(curChatIndex)">
+                                            Cancella messaggio
+                                        </button>
+                                    </li>
+
+                                </ul>
+
+                            </div>
+
+                            <span class="txt-0 txt-g">
+                                {{ simpleDate(curChat.date) }}
+                            </span>
+
+                        </div>
+                        <!-- /Message Options Dropdown Menu -->
+
+                    </div>
+
+                </div>
+                <!-- /Chat Display -->
+
+                <!-- Typing Box -->
+                <div id="typing">
+
+                    <div>
+                        <button>
+                            <i class="fa-regular fa-face-smile txt-d"></i>
+                        </button>
+                    </div>
+
+                    <input type="text" 
+                    placeholder="Scrivi un messaggio"
+                    v-model.trim="newMessageText"
+                    @keyup.enter="addMessageBox">
+
+                    <div>
+
+                        <button v-if="showSendButton"
+                        @click="show">
+                            <i class="fa-regular fa-paper-plane txt-d"></i>
+                        </button>
+
+                        <button v-else @click="show">
+                            <i class="fa-solid fa-microphone txt-d"></i>
+                        </button>
+
+                    </div>
+
+                </div>
+                <!-- /Typing Box -->
+
+            </section>
+            <!-- /Chat Section -->
+
+        </main>
+        <!-- /Main -->
+
+    </div>
+    <!-- /VueJS App Container -->
+
+    <script src="https://cdn.jsdelivr.net/npm/luxon@3.4.4/build/global/luxon.min.js"></script>
+    <script src="./js/script.js"></script>
+</body>
 
 </html>
