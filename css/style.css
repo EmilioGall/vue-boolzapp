@@ -279,6 +279,25 @@ header {
     align-items: center;
     gap: calc((var(--headers-h) - var(--icon-h)) / 5);
     margin-right: calc((var(--headers-h) - var(--icon-h)) / 2);
+    position: relative;
+}
+
+#chat header div + div:last-child ul {
+    background-color: var(--white);
+    position: absolute;
+    width: 120px;
+    right: -2px;
+    padding: 5px 15px 5px 10px;
+    border-radius: 5px;
+    box-shadow: 2px 2px 10px var(--grey);
+    right: 0;
+    top: calc(var(--headers-h) - 10px);
+    z-index: 1;
+}
+
+#chat header div + div:last-child ul li {
+margin: 10px 0px;
+
 }
 
 /*** Chat Display - Chat Section ********************/

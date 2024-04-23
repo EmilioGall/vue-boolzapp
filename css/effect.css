@@ -18,6 +18,10 @@ header button:hover > i {
     cursor: pointer;
 }
 
+#chat header div + div:last-child ul li:hover {
+    color: var(--grey);    
+}
+
 #typing button:hover {
     background-color: var(--white);
 }

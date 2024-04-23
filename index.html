@@ -184,10 +184,27 @@
                             <i class="txt-g fa-solid fa-paperclip"></i>
                         </button>
 
-                        <button>
+                        <button @click="optionsDropdown=!optionsDropdown">
                             <i class="txt-g fa-solid fa-ellipsis-vertical"></i>
                         </button>
 
+                        <ul class="menu-list" v-show="optionsDropdown">
+
+                            <li class="txt-0 txt-d">
+                                <a 
+                                @click="deleteCurProfileChatMessages()">
+                                    Elimina messaggi
+                                </a>
+                            </li>
+                            
+                            <li class="txt-0 txt-d">
+                                <a 
+                                @click="deleteCurProfileChat()">
+                                    Elimina chat
+                                </a>
+                            </li>
+
+                        </ul>                            
 
                     </div>
                     <!-- /Account Tools -->
@@ -259,12 +276,11 @@
 
                     <div>
 
-                        <button v-if="showSendButton"
-                        @click="show">
+                        <button v-if="showSendButton">
                             <i class="fa-regular fa-paper-plane txt-d"></i>
                         </button>
 
-                        <button v-else @click="show">
+                        <button v-else>
                             <i class="fa-solid fa-microphone txt-d"></i>
                         </button>
 

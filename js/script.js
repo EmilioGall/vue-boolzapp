@@ -42,6 +42,8 @@ createApp({
 
          showSendButton: false,
 
+         optionsDropdown: false,
+
          contacts: [
 
             {
@@ -264,14 +266,6 @@ createApp({
 
    methods: {
 
-      show: function(){
-
-         this.showSendButton = !this.showSendButton
-
-         console.log("showSendButton", this.showSendButton);
-
-      },
-
       addMessageBox: function(){
 
          // console.log("clicked");
@@ -350,6 +344,26 @@ createApp({
 
       },
    
+      deleteCurProfileChat: function(){
+
+         // console.log("clicked");
+
+         // console.log("this.chatIndex", curChatIndex);
+
+         this.contacts.splice(this.activeIndex, 1);
+
+      },
+
+      deleteCurProfileChatMessages: function(){
+
+         console.log("clicked");
+
+         // console.log("this.chatIndex", curChatIndex);
+
+         this.filteredContacts[this.activeIndex].messages.splice(0, this.filteredContacts[this.activeIndex].messages.length);
+
+      },
+
    },
 
 }).mount("#app");
