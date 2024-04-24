@@ -272,11 +272,12 @@
                     <input type="text" 
                     placeholder="Scrivi un messaggio"
                     v-model.trim="newMessageText"
-                    @keyup.enter="addMessageBox">
+                    @keyup.enter="addMessageBox"
+                    @input="messageBoxCheck">
 
                     <div>
 
-                        <button v-if="showSendButton">
+                        <button v-if="showSendButton" @click="addMessageBox">
                             <i class="fa-regular fa-paper-plane txt-d"></i>
                         </button>
 

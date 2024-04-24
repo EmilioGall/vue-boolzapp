@@ -216,7 +216,17 @@ createApp({
                   }
                ],
             }
-         ]
+         ],
+
+         randomAnswers: [
+
+            "Bene, grazie. Tu?",
+            "Anche io.",
+            "Wow!",
+            "Non penso proprio",
+            "Va bene."
+            
+         ],
 
       };
 
