@@ -36,6 +36,8 @@ createApp({
 
          newMessageText: "",
 
+         newMessageBox: {},
+
          autoResponse: null,
 
          profileSearchText: "",
@@ -225,7 +227,7 @@ createApp({
             "Wow!",
             "Non penso proprio",
             "Va bene."
-            
+
          ],
 
       };
@@ -286,7 +288,7 @@ createApp({
 
             console.log("nowDate", nowDate, typeof nowDate);
 
-            const newMessageBox = {
+            this.newMessageBox = {
 
                date: `${nowDate.setLocale('it').toLocaleString(dt.DATE_SHORT)} ${nowDate.setLocale('it').toLocaleString(dt.TIME_WITH_SECONDS)}`,
 
@@ -296,11 +298,11 @@ createApp({
 
             };
 
-            console.log("newMessageBox", newMessageBox, typeof newMessageBox);
+            console.log("this.newMessageBox", this.newMessageBox, typeof newMessageBox);
 
-            console.log(this.simpleDate("10/01/2020 15:30:55"));
+            console.log(this.simpleDate(this.newMessageBox.date));
 
-            this.filteredContacts[this.activeIndex].messages.push(newMessageBox);
+            this.filteredContacts[this.activeIndex].messages.push(this.newMessageBox);
 
             this.setAnswer();
 
@@ -310,17 +312,32 @@ createApp({
 
       },
 
+      getRandomIntInclusive: function(min, max) {
+
+         const minCeiled = Math.ceil(min);
+
+         const maxFloored = Math.floor(max);
+
+         return Math.floor(Math.random() * (maxFloored - minCeiled + 1) + minCeiled);
+
+      },
+       
+
       setAnswer: function(){
 
          this.autoResponse = setTimeout(()=> {
 
             const nowDate = dt.now()
 
+            const answerIndex = this.getRandomIntInclusive(0, this.randomAnswers.length-1)
+
+            console.log("answerIndex", answerIndex);
+
             const newResponseBox = {
 
                date: `${nowDate.setLocale('it').toLocaleString(dt.DATE_SHORT)} ${nowDate.setLocale('it').toLocaleString(dt.TIME_WITH_SECONDS)}`,
 
-               message: 'Ok!',
+               message: this.randomAnswers[answerIndex],
 
                status: 'received'
 
