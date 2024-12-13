@@ -16,11 +16,11 @@ const now1 = dt.now()
 
 // console.log(`${now1.setLocale('it').toLocaleString(dt.DATE_SHORT)} ${now1.setLocale('it').toLocaleString(dt.TIME_WITH_SECONDS)}`);
 
-// const dateString = "10/01/2020 15:30:55";
+const dateString = "10/1/2020 15:30:55";
 
-// const dateLuxon = dt.fromFormat(dateString, "dd/MM/yyyy TT")
+const dateLuxon = dt.fromFormat(dateString, "dd/M/yyyy TT")
 
-// console.log("data Luxon", dateLuxon);
+console.log("data Luxon", dateLuxon);
 
 
 /////VueJS///////////////////////////////////
@@ -230,6 +230,8 @@ createApp({
 
          ],
 
+         statusChatHeader: `Ultimo accesso oggi alle xx:xx`,
+
       };
 
    },
@@ -290,7 +292,7 @@ createApp({
 
             this.newMessageBox = {
 
-               date: `${nowDate.setLocale('it').toLocaleString(dt.DATE_SHORT)} ${nowDate.setLocale('it').toLocaleString(dt.TIME_WITH_SECONDS)}`,
+               date: `${nowDate.setLocale('it').toLocaleString(dt.DATETIME_SHORT_WITH_SECONDS)}`,
 
                message: this.newMessageText,
 
@@ -300,14 +302,15 @@ createApp({
 
             console.log("this.newMessageBox", this.newMessageBox, typeof newMessageBox);
 
-            console.log(this.simpleDate(this.newMessageBox.date));
+            console.log(this.newMessageBox.date);
 
             this.filteredContacts[this.activeIndex].messages.push(this.newMessageBox);
 
+            this.newMessageText = "";
+
             this.setAnswer();
 
-            this.newMessageText = "";
-            
+            this.setTyping();
          };
 
       },
@@ -322,6 +325,27 @@ createApp({
 
       },
        
+      setTyping: function(){
+
+         setTimeout(()=> {
+
+            this.statusChatHeader = `Typing...`;
+
+         }, 1000);
+
+         setTimeout(()=> {
+
+            this.statusChatHeader = `Online`;
+
+         }, 3000);
+
+         setTimeout(()=> {
+
+            this.statusChatHeader = `Ultimo accesso oggi alle ${this.simpleDate(this.contacts[this.activeIndex].messages[this.contacts[this.activeIndex].messages.length-1].date)}`;
+
+         }, 5000);
+
+      },
 
       setAnswer: function(){
 
@@ -335,7 +359,7 @@ createApp({
 
             const newResponseBox = {
 
-               date: `${nowDate.setLocale('it').toLocaleString(dt.DATE_SHORT)} ${nowDate.setLocale('it').toLocaleString(dt.TIME_WITH_SECONDS)}`,
+               date: `${nowDate.setLocale('it').toLocaleString(dt.DATETIME_SHORT_WITH_SECONDS)}}`,
 
                message: this.randomAnswers[answerIndex],
 
@@ -345,7 +369,7 @@ createApp({
 
             this.filteredContacts[this.activeIndex].messages.push(newResponseBox);
 
-         }, 1000);
+         }, 3000);
 
       },
 
@@ -361,7 +385,9 @@ createApp({
 
       simpleDate: function(dateToSimplify){
 
-         const dateInLuxon = dt.fromFormat(dateToSimplify, "dd/MM/yyyy TT");
+         // console.log("dateToSimplify", dateToSimplify);
+
+         const dateInLuxon = dt.fromFormat(dateToSimplify, "dd/LL/yyyy TT");
 
          // console.log("data Luxon", dateInLuxon);
 
